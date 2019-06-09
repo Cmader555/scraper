@@ -5,9 +5,9 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const exphbs = require("express-handlebars");
 
-var PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8080;
 
-var app = express();
+const app = express();
 
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
@@ -20,6 +20,9 @@ app.use(express.json());
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+
+//require("./routes/apiRoutes")(app);
+require("./routes/html_routes")(app);
 
 
 // Start our server so that it can begin listening to client requests.
