@@ -17,4 +17,42 @@ module.exports = function (app) {
         console.log("Database Error:", error);
     });
 
-}; 
+
+    app.get("/scrape", function (req, res) {
+
+        axios.get("https://bleacherreport.com/").then(function (response) {
+
+            let $ = cheerio.load(response.data);
+            let results = [];
+
+            $("li.articleSummary").each(function (i, element) {
+                const imgurl = $(element)
+                    .children(".articleMedia")
+                    .children()
+                    .children()
+                    .attr("src");
+
+                const title = $(element)
+                    .children(".articleContent")
+                    .children(".articleTitle")
+                    .text();
+                const href = $(element)
+                    .children(".articleContent")
+                    .children(".articleTitle")
+                    .attr("href");
+
+                results.push({
+                    title,
+                    href,
+                    imgurl
+                });
+
+            });
+            console.log(results);
+
+            res.send("Scrape Complete");
+        });
+    })
+
+};
+
