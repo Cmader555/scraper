@@ -48,9 +48,9 @@ module.exports = function (app) {
                 });
 
             });
-            console.log(results);
+            //console.log(results);
 
-            res.send("Scrape Complete");
+            res.send(results);
         });
     })
 
