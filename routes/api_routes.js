@@ -29,7 +29,7 @@ module.exports = function (app) {
                 const imgurl = $(element)
                     .children(".articleMedia")
                     .children()
-                    .children()
+                    .children(".lazyImage")
                     .attr("src");
 
                 const title = $(element)

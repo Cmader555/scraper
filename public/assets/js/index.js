@@ -12,9 +12,11 @@ $("#scraper").on("click", function(event){
 
     }).then( function (response){
         //console.log(response)
-        //console.log(response[1].title)
+        // console.log(response[1].title)
+        // console.log(response[1].href)
+        console.log(response[1].imgurl)
 
-        for (let i = 0; i < response.length; i++){
+        for (let i = 0; i < 10; i++){
 
             
             let display = `
@@ -22,9 +24,10 @@ $("#scraper").on("click", function(event){
              <div class="col s12" align="center">
               <div class="card blue-grey darken-1">
                 <div class="card-content white-text">
+                    <a href="${response[i].href}" target="blank">
                     <span class="card-title">${response[i].title}</span>
-                    <img src="${response[i].imageurl}" alt="Drink" height="150" width="150">
-                    <p>${response[i].href}</p>
+                    </a>
+                    <img src="${response[i].imgurl}" alt="sports" height="50" width="50">
                   </div>
                 </div
               </div>
