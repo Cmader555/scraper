@@ -5,6 +5,7 @@
 $("#scraper").on("click", function(event){
 
     event.preventDefault(); 
+    $(".toRemove").remove()
 
     $.ajax({
         type: "GET", 
@@ -20,7 +21,7 @@ $("#scraper").on("click", function(event){
 
             
             let display = `
-            <div class="row">
+            <div class="row toRemove">
              <div class="col s12" align="center">
               <div class="card blue-grey darken-1">
                 <div class="card-content white-text">
@@ -39,4 +40,11 @@ $("#scraper").on("click", function(event){
 
 
     })
+})
+
+$("#reset").on("click", function(event){
+    
+    event.preventDefault(); 
+    $(".toRemove").remove()
+
 })
