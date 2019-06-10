@@ -6,6 +6,10 @@ module.exports = function (app) {
         res.render("index")
     });
 
+    app.get("/favorites", function(req, res){
 
+        res.render("saved")
+
+    }); 
 
 }

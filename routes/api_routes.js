@@ -4,13 +4,14 @@ const mongojs = require("mongojs");
 const axios = require("axios");
 const cheerio = require("cheerio");
 const exphbs = require("express-handlebars");
+const db = require("../models/sports_articles");
 
 
 
 module.exports = function (app) {
 
     const databaseUrl = "sportsScraper";
-    const collections = ["sportsData"];
+    const collections = ["sportsArticle"];
 
     const db = mongojs(databaseUrl, collections);
     db.on("error", function (error) {
@@ -41,15 +42,21 @@ module.exports = function (app) {
                     .children(".articleTitle")
                     .attr("href");
 
+                const saved = false; 
+
                 results.push({
                     title,
                     href,
-                    imgurl
+                    imgurl, 
+                    saved
                 });
 
             });
             //console.log(results);
-
+            db.sportsArticle.insert(results).then(function(article) {
+                }).catch(function(err) {
+                return res.json(err);
+                });
             res.send(results);
         });
     })

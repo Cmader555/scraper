@@ -17,6 +17,10 @@ let sportsSchema = new Schema({
     imgURL: {
         type: String,
         required: true
+    }, 
+    saved: {
+        type: Boolean, 
+        default: false
     }
 }); 
 
