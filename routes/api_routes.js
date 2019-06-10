@@ -12,10 +12,10 @@ module.exports = function (app) {
     // const databaseUrl = "sportsScraper";
     // const collections = ["sportsArticle"];
 
-    // // const db = mongojs(databaseUrl, collections);
-    // // db.on("error", function (error) {
-    // //     console.log("Database Error:", error);
-    // // });
+    // const db = mongojs(databaseUrl, collections);
+    // db.on("error", function (error) {
+    //     console.log("Database Error:", error);
+    // });
 
 
     app.get("/scrape", function (req, res) {
@@ -65,6 +65,8 @@ module.exports = function (app) {
             }).catch(function (err) {
                 return res.json(err);
             });
+
+            db.findOneAndUpdate({_id: req.body._id}, {$set: {saved: true}})
         });
     })
 
