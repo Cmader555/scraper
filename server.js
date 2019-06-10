@@ -4,6 +4,7 @@ const express = require("express");
 const axios = require("axios");
 const cheerio = require("cheerio");
 const exphbs = require("express-handlebars");
+const mongoose = require('mongoose');
 
 const PORT = process.env.PORT || 8080;
 
@@ -24,6 +25,8 @@ app.set("view engine", "handlebars");
 require("./routes/api_routes")(app);
 require("./routes/html_routes")(app);
 
+
+mongoose.connect("mongodb://localhost/sportsScraper", { useNewUrlParser: true });
 
 // Start our server so that it can begin listening to client requests.
 app.listen(PORT, function() {

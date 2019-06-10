@@ -3,20 +3,19 @@ const express = require("express");
 const mongojs = require("mongojs");
 const axios = require("axios");
 const cheerio = require("cheerio");
-const exphbs = require("express-handlebars");
 const db = require("../models/sports_articles");
 
 
 
 module.exports = function (app) {
 
-    const databaseUrl = "sportsScraper";
-    const collections = ["sportsArticle"];
+    // const databaseUrl = "sportsScraper";
+    // const collections = ["sportsArticle"];
 
-    const db = mongojs(databaseUrl, collections);
-    db.on("error", function (error) {
-        console.log("Database Error:", error);
-    });
+    // // const db = mongojs(databaseUrl, collections);
+    // // db.on("error", function (error) {
+    // //     console.log("Database Error:", error);
+    // // });
 
 
     app.get("/scrape", function (req, res) {
@@ -42,22 +41,30 @@ module.exports = function (app) {
                     .children(".articleTitle")
                     .attr("href");
 
-                const saved = false; 
+                const saved = false;
 
                 results.push({
                     title,
                     href,
-                    imgurl, 
+                    imgurl,
                     saved
                 });
 
             });
             //console.log(results);
-            db.sportsArticle.insert(results).then(function(article) {
-                }).catch(function(err) {
+            db.create(results).then(function (article) {
+                //console.log(article)
+                //res.send(article);
+            }).catch(function (err) {
                 return res.json(err);
-                });
-            res.send(results);
+            });
+
+            db.find({}).then(function (article) {
+                res.send(article)
+
+            }).catch(function (err) {
+                return res.json(err);
+            });
         });
     })
 
