@@ -2,24 +2,24 @@
 
 //scrape button, get scrape and display results
 
-$("#scraper").on("click", function(event){
+$("#scraper").on("click", function (event) {
 
-    event.preventDefault(); 
+    event.preventDefault();
     $(".toRemove").remove()
 
     $.ajax({
-        type: "GET", 
+        type: "GET",
         url: "/scrape"
 
-    }).then( function (response){
+    }).then(function (response) {
         //console.log(response)
         // console.log(response[1].title)
         // console.log(response[1].href)
         console.log(response[1].imgurl)
 
-        for (let i = 0; i < 10; i++){
+        for (let i = 0; i < 10; i++) {
 
-            
+
             let display = `
             <div class="row toRemove">
              <div class="col s12" align="center">
@@ -29,22 +29,25 @@ $("#scraper").on("click", function(event){
                     <span class="card-title">${response[i].title}</span>
                     </a>
                     <img src="${response[i].imgurl}" alt="sports" height="50" width="50">
+                        <div class="right-align">
+                            <button class="btn waves-effect amber lighten-1" type="submit" name="action" id="favorite"><i class="far fa-star"></i></button>
+                        <div>
                   </div>
                 </div
               </div>
             </div
-          `; 
+          `;
 
-          $("#displayArticles").prepend(display);
+            $("#displayArticles").prepend(display);
         }
 
 
     })
 })
 
-$("#reset").on("click", function(event){
-    
-    event.preventDefault(); 
+$("#reset").on("click", function (event) {
+
+    event.preventDefault();
     $(".toRemove").remove()
 
 })
