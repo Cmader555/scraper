@@ -15,7 +15,7 @@ $("#scraper").on("click", function (event) {
     //console.log(response)
     // console.log(response[1].title)
     // console.log(response[1].href)
-    console.log(response[1].imgurl)
+    //console.log(response[1]._id)
 
     for (let i = 0; i < 10; i++) {
 
@@ -30,7 +30,7 @@ $("#scraper").on("click", function (event) {
                     </a>
                     <img src="${response[i].imgurl}" alt="sports" height="50" width="50">
                         <div class="right-align">
-                            <button class="btn waves-effect amber lighten-1" type="submit" name="action" id="favoriteSubmit"><i class="far fa-star"></i></button>
+                            <button class="btn waves-effect amber lighten-1" type="submit" name="action" id="favoriteSubmit" vale="${response[i]._id}"><i class="far fa-star"></i></button>
                         <div>
                   </div>
                 </div
