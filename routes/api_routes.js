@@ -73,19 +73,20 @@ module.exports = function (app) {
 
     app.put("/saved/:_id", function (req, res) {
 
-        db.findOneAndUpdate({ _id: req.params._id }, {$set: {saved: true}
-        }).then(function(data) {
+        db.findOneAndUpdate({ _id: req.params._id }, {
+            $set: { saved: true }
+        }).then(function (data) {
             res.json(data);
-            console.log(data)
-            console.log(req.params._id)
+            // console.log(data)
+            // console.log(req.params._id)
         });
 
 
-    }); 
+    });
 
     app.get("/saved-favorites/", function (req, res) {
 
-        db.find({saved: true}).then(function (savedArticles) {
+        db.find({ saved: true }).then(function (savedArticles) {
             res.json(savedArticles)
 
         }).catch(function (err) {
@@ -93,7 +94,20 @@ module.exports = function (app) {
         });
 
 
-    }); 
+    });
+
+    app.put("/remove-saved/:_id", function (req, res) {
+
+        db.findOneAndUpdate({ _id: req.params._id }, {
+            $set: { saved: false }
+        }).then(function (data) {
+            res.json(data);
+            // console.log(data)
+            // console.log(req.params._id)
+        });
+
+
+    });
 
 };
 

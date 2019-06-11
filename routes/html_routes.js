@@ -10,8 +10,8 @@ module.exports = function (app) {
 
         db.find({saved: true})
         .then(function (savedArticles) {
-            
-            res.render("saved", savedArticles)
+            //console.log(savedArticles)
+            res.render("saved", {savedArticles})
 
         }).catch(function (err) {
             return res.json(err);

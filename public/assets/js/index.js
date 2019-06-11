@@ -66,7 +66,7 @@ $(document).on('click', "#favoriteSubmit", function (event) {
     }).then(function (response) {
   
       console.log("You clicked the favorite Button!")
-      console.log("???????", response)
+      //console.log("???????", response)
   
     });
 
