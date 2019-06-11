@@ -18,7 +18,7 @@ module.exports = function (app) {
     // });
 
 
-    app.get("/scrape", function (req, res) {
+    app.get("/articles", function (req, res) {
 
         axios.get("https://bleacherreport.com/").then(function (response) {
 
@@ -66,9 +66,34 @@ module.exports = function (app) {
                 return res.json(err);
             });
 
-            db.findOneAndUpdate({_id: req.body._id}, {$set: {saved: true}})
+
         });
     })
+
+
+    app.put("/saved/:_id", function (req, res) {
+
+        db.findOneAndUpdate({ _id: req.params._id }, {$set: {saved: true}
+        }).then(function(data) {
+            res.json(data);
+            console.log(data)
+            console.log(req.params._id)
+        });
+
+
+    }); 
+
+    app.get("/saved-favorites/", function (req, res) {
+
+        db.find({saved: true}).then(function (savedArticles) {
+            res.json(savedArticles)
+
+        }).catch(function (err) {
+            return res.json(err);
+        });
+
+
+    }); 
 
 };
 

@@ -9,7 +9,7 @@ $("#scraper").on("click", function (event) {
 
   $.ajax({
     type: "GET",
-    url: "/scrape"
+    url: "/articles"
 
   }).then(function (response) {
     //console.log(response)
@@ -30,7 +30,7 @@ $("#scraper").on("click", function (event) {
                     </a>
                     <img src="${response[i].imgurl}" alt="sports" height="50" width="50">
                         <div class="right-align">
-                            <button class="btn waves-effect amber lighten-1" type="submit" name="action" id="favoriteSubmit" vale="${response[i]._id}"><i class="far fa-star"></i></button>
+                            <button class="btn waves-effect amber lighten-1" type="submit" name="action" id="favoriteSubmit" value="${response[i]._id}"><i class="far fa-star"></i></button>
                         <div>
                   </div>
                 </div
@@ -61,11 +61,12 @@ $(document).on('click', "#favoriteSubmit", function (event) {
 
     $.ajax({
       type: "PUT",
-      url: "/scrape",
-      data: _id
+      url: "/saved/" + _id
+      
     }).then(function (response) {
   
       console.log("You clicked the favorite Button!")
+      console.log("???????", response)
   
     });
 
