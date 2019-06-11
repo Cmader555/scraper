@@ -56,7 +56,7 @@ $("#reset").on("click", function (event) {
 $(document).on('click', "#favoriteSubmit", function (event) {
 
   _id = this.value
-
+  
   function updateFavorites(_id) {
 
     $.ajax({
@@ -67,7 +67,9 @@ $(document).on('click', "#favoriteSubmit", function (event) {
   
       console.log("You clicked the favorite Button!")
       //console.log("???????", response)
-  
+      
+      
+
     });
 
 

@@ -109,14 +109,20 @@ module.exports = function (app) {
 
     });
 
-    app.post("/saved-notes/", function (req, res) {
+    app.post("/create-notes/:_id", function (req, res) {
 
-        db.Note.create(req.body).then(function (article) {
-            //console.log(article)
-            //res.send(article);
-        }).catch(function (err) {
-            return res.json(err);
-        })
+        db.Note.create(req.body)
+            .then(function (article) {
+
+                return db.sportsArticle.findOneAndUpdate({ _id: req.params.id }, { note: dbNote._id }, { new: true });
+
+            }).then(function (dbArticle) {
+                // If we were able to successfully update an Article, send it back to the client
+                res.json(dbArticle);
+            }).catch(function (err) {
+                // If an error occurred, send it to the client
+                res.json(err);
+            });
 
 
 

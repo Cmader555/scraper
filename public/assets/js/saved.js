@@ -36,14 +36,26 @@ $(document).ready(function () {
 $("#addNote").on("click", function (event) {
 
   let note = $("#noteNote").val().trim()
+  let _id = this.value;
+  console.log(_id);
+  function addNote(_id) {
+
+    $.ajax({
+
+      type: 'POST',
+      url: "/create-notes/" + _id,
+      data: note
 
 
-  $.post("/saved-notes/", note).then(
-    function () {
-      console.log("created new drink");
-      // Reload the page to get the updated list
-      //location.reload();
-    }
-  )
+    }).then(function (response) {
+
+      console.log("You clicked make a Note!")
+      //console.log("////////", response)
+      $("#noteNote").val("");
+
+    });
+  }
+
+  addNote(_id)
 
 }); 
