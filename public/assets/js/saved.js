@@ -25,3 +25,9 @@ $(document).on('click', "#favoriteFalse", function (event) {
     removeFavorite(_id); 
   
   })
+
+  $(document).ready(function () {
+
+    $(".modal").modal();
+  
+  })

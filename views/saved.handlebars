@@ -25,11 +25,54 @@
             <button class="btn waves-effect red lighten-1" type="submit" name="action" id="favoriteFalse"
               value={{_id}}><i class="far fa-trash-alt"></i></button>
 
+             <a class="waves-effect waves-light btn pink darken-1 modal-trigger" href="#demo-modal">Article Notes</a>
+
           </div>
         </div>
       </div>
     </div>
   </div>
   {{/each}}
+
+</div>
+
+
+<div class="container">
+
+  <!-- Modal Trigger -->
+
+
+
+
+  <!-- Modal Structure -->
+
+  <div id="demo-modal" class="modal">
+
+    <div class="modal-content">
+      <h5>View Notes!</h5>
+
+      {{#each Note}}
+          <p></p>
+          <button type="submit" class="btn btn-success submit" id="deleteNote">Delete Note!</button>
+      {{/each}}
+
+
+      <h6>Add A Note!</h6>
+      <form id="add-drink">  
+        <textarea placeholder="New Note" rows="5" cols="50" name="comment" form="usrform"
+          id="description"></textarea>
+      </form>
+      <br>
+      <button type="submit" class="btn btn-success submit" id="addNote">Add Note!</button>
+
+    </div>
+
+    <div class="modal-footer">
+
+      <a href="#!" class="modal-action modal-close waves-effect waves-red btn red lighten-1">Close</a>
+
+    </div>
+
+  </div>
 
 </div>
