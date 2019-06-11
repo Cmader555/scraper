@@ -109,5 +109,18 @@ module.exports = function (app) {
 
     });
 
+    app.post("/saved-notes/", function (req, res) {
+
+        db.Note.create(req.body).then(function (article) {
+            //console.log(article)
+            //res.send(article);
+        }).catch(function (err) {
+            return res.json(err);
+        })
+
+
+
+    })
+
 };
 
