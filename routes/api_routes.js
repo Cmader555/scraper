@@ -3,7 +3,7 @@ const express = require("express");
 const mongojs = require("mongojs");
 const axios = require("axios");
 const cheerio = require("cheerio");
-const db = require("../models/sports_articles");
+const db = require("../models");
 
 
 
@@ -52,14 +52,14 @@ module.exports = function (app) {
 
             });
             //console.log(results);
-            db.create(results).then(function (article) {
+            db.sportsArticle.create(results).then(function (article) {
                 //console.log(article)
                 //res.send(article);
             }).catch(function (err) {
                 return res.json(err);
             });
 
-            db.find({}).then(function (article) {
+            db.sportsArticle.find({}).then(function (article) {
                 res.send(article)
 
             }).catch(function (err) {
@@ -73,7 +73,7 @@ module.exports = function (app) {
 
     app.put("/saved/:_id", function (req, res) {
 
-        db.findOneAndUpdate({ _id: req.params._id }, {
+        db.sportsArticle.findOneAndUpdate({ _id: req.params._id }, {
             $set: { saved: true }
         }).then(function (data) {
             res.json(data);
@@ -86,7 +86,7 @@ module.exports = function (app) {
 
     app.get("/saved-favorites/", function (req, res) {
 
-        db.find({ saved: true }).then(function (savedArticles) {
+        db.sportsArticle.find({ saved: true }).then(function (savedArticles) {
             res.json(savedArticles)
 
         }).catch(function (err) {
@@ -98,7 +98,7 @@ module.exports = function (app) {
 
     app.put("/remove-saved/:_id", function (req, res) {
 
-        db.findOneAndUpdate({ _id: req.params._id }, {
+        db.sportsArticle.findOneAndUpdate({ _id: req.params._id }, {
             $set: { saved: false }
         }).then(function (data) {
             res.json(data);
