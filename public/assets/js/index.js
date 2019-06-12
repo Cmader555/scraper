@@ -55,29 +55,28 @@ $("#reset").on("click", function (event) {
 
 $(document).on('click', "#favoriteSubmit", function (event) {
 
-  event.preventDefault(); 
+  event.preventDefault();
 
   _id = this.value
-  
+
   function updateFavorites(_id) {
 
     $.ajax({
       type: "PUT",
       url: "/saved/" + _id
-      
+
     }).then(function (response) {
-  
+
       console.log("You clicked the favorite Button!")
       //console.log("???????", response)
-      
-      
+
+
 
     });
 
 
   }
-  updateFavorites(_id); 
+  updateFavorites(_id);
 
 })
 
-$(document).on("click", ".deleteNote")

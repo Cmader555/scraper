@@ -133,7 +133,7 @@ module.exports = function (app) {
         db.sportsArticle.findById(req.params.id)
             .populate("note")
             .then(function (dbNotes) {
-               
+
                 console.log("//from view-notes//////", dbNotes)
                 res.json(dbNotes);
             })
@@ -144,5 +144,14 @@ module.exports = function (app) {
 
     })
 
+    app.delete("/delete-notes/:id", function (req, res) {
+
+        db.Note.findByIdAndRemove(req.params.id, (err, note) => {
+            if (err) return res.status(500).send(err);
+            return res.status(200).send();
+        })
+
+
+    })
 };
 

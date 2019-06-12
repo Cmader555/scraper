@@ -57,7 +57,7 @@ $(".article-button").on("click", function (e) {
         let display = `
         <div class="container">
         <p>${response.note[i].body}</p>
-        <button type="submit" class="btn btn-success submit deleteNote">Delete Note!</button>
+        <button type="submit" class="btn btn-success submit deleteNote" value="${response.note[i]._id}">Delete Note!</button>
         </div>
         `
         $(".noteViewAdd").append(display);
@@ -94,5 +94,27 @@ $(document).on("click", "#addNote", function (event) {
   }
 
   addNote(_id)
+
+});
+
+$(document).on("click", ".deleteNote", function (event) {
+
+  let _id = this.value
+
+  function deleteNotes(_id){
+
+    $.ajax({
+      type: "DELETE",
+      url: "/delete-notes/" + _id
+    }).then(function (response) {
+  
+    });
+
+
+  }
+
+  deleteNotes(_id)
+
+
 
 }); 
