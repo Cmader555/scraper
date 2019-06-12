@@ -52,20 +52,17 @@ module.exports = function (app) {
 
             });
             //console.log(results);
-            db.sportsArticle.create(results).then(function (article) {
-                //console.log(article)
-                //res.send(article);
-            }).catch(function (err) {
-                return res.json(err);
-            });
+            db.sportsArticle.create(results)
+                .then(function (article) {
 
-            db.sportsArticle.find({}).then(function (article) {
-                res.send(article)
+                    db.sportsArticle.find({})
 
-            }).catch(function (err) {
-                return res.json(err);
-            });
+                }).then(function (article) {
+                    res.send(article)
 
+                }).catch(function (err) {
+                    return res.json(err);
+                });
 
         });
     })

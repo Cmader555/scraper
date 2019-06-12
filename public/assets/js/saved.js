@@ -38,6 +38,7 @@ $(document).ready(function () {
 
 $(".article-button").on("click", function (e) {
   //let currentId = $(this).data("value");
+  $(".noteViewAdd").empty(); 
   $("#addNote").val($(this).data("value"))
   let _id = $(this).data("value")
 
@@ -56,10 +57,13 @@ $(".article-button").on("click", function (e) {
 
         let display = `
         <div class="container">
-        <p>${response.note[i].body}</p>
-        <button type="submit" class="btn btn-success submit deleteNote" value="${response.note[i]._id}">Delete Note!</button>
+          <p>${response.note[i].body}</p>
+          <div class="right-align">
+            <button type="submit" class="btn btn-success submit deleteNote" value="${response.note[i]._id}">Delete Note!</button>
+          </div>
         </div>
         `
+        
         $(".noteViewAdd").append(display);
 
       }

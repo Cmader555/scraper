@@ -1,0 +1,9 @@
+ body {
+     font-family: 'Noto Sans HK', sans-serif;
+ }
+
+ .noteViewAdd {
+     border-radius: 10px;
+     border: .5px solid grey;
+     padding: 1%;
+ }
