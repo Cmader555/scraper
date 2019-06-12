@@ -55,6 +55,8 @@ $("#reset").on("click", function (event) {
 
 $(document).on('click', "#favoriteSubmit", function (event) {
 
+  event.preventDefault(); 
+
   _id = this.value
   
   function updateFavorites(_id) {
@@ -77,3 +79,5 @@ $(document).on('click', "#favoriteSubmit", function (event) {
   updateFavorites(_id); 
 
 })
+
+$(document).on("click", ".deleteNote")

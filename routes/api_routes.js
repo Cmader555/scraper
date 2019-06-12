@@ -114,7 +114,7 @@ module.exports = function (app) {
         db.Note.create(req.body)
             .then(function (dbNote) {
 
-                return db.sportsArticle.findOneAndUpdate({ _id: req.params.id }, {$push: {note: dbNote._id }}, { new: true });
+                return db.sportsArticle.findOneAndUpdate({ _id: req.params.id }, { $push: { note: dbNote._id } }, { new: true });
 
             }).then(function (dbArticle) {
                 // If we were able to successfully update an Article, send it back to the client
@@ -128,11 +128,19 @@ module.exports = function (app) {
 
     })
 
-    app.get("/view-notes/:id", function (req, res){
+    app.get("/view-notes/:id", function (req, res) {
 
         db.sportsArticle.findById(req.params.id)
             .populate("note")
-
+            .then(function (dbNotes) {
+               
+                console.log("//from view-notes//////", dbNotes)
+                res.json(dbNotes);
+            })
+            .catch(function (err) {
+                // If an error occurred, send it to the client
+                res.json(err);
+            });
 
     })
 

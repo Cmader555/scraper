@@ -17,12 +17,18 @@ let sportsSchema = new Schema({
     imgurl: {
         type: String,
         required: true
-    }, 
+    },
     saved: {
-        type: Boolean, 
+        type: Boolean,
         default: false
-    }
-}); 
+    },
+    note: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Note"
+        }
+    ]
+});
 
 let sportsArticle = mongoose.model("sportsArticle", sportsSchema);
 

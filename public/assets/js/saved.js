@@ -36,9 +36,36 @@ $(document).ready(function () {
 
 
 
-$(".article-button").on("click", function(e){
+$(".article-button").on("click", function (e) {
   //let currentId = $(this).data("value");
   $("#addNote").val($(this).data("value"))
+  let _id = $(this).data("value")
+
+  console.log("_id IS ", _id)
+  function displayNotes(_id) {
+
+    $.ajax({
+
+      type: "GET",
+      url: "/view-notes/" + _id
+
+
+    }).then(function (response) {
+      console.log("respnose is!", response)
+      for (let i = 0; i < response.note.length; i++) {
+
+        let display = `
+        <div class="container">
+        <p>${response.note[i].body}</p>
+        <button type="submit" class="btn btn-success submit deleteNote">Delete Note!</button>
+        </div>
+        `
+        $(".noteViewAdd").append(display);
+
+      }
+    })
+  }
+  displayNotes(_id)
 })
 
 
@@ -54,7 +81,7 @@ $(document).on("click", "#addNote", function (event) {
 
       type: 'POST',
       url: "/create-notes/" + _id,
-      data: {body: note, sportsArticle: _id}
+      data: { body: note, sportsArticle: _id }
 
 
     }).then(function (response) {

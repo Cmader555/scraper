@@ -25,7 +25,8 @@
             <button class="btn waves-effect red lighten-1" type="submit" name="action" id="favoriteFalse"
               value={{_id}}><i class="far fa-trash-alt"></i></button>
 
-             <a class="waves-effect waves-light btn pink darken-1 modal-trigger article-button" href="#demo-modal" data-value={{_id}}>Article Notes</a>
+            <a class="waves-effect waves-light btn pink darken-1 modal-trigger article-button" href="#demo-modal"
+              data-value={{_id}}>Article Notes</a>
 
           </div>
         </div>
@@ -50,21 +51,20 @@
 
     <div class="modal-content">
       <h5>View Notes!</h5>
+      <div class="noteViewAdd">
 
-      {{#each Note}}
-          <p></p>
-          <button type="submit" class="btn btn-success submit" id="deleteNote">Delete Note!</button>
-      {{/each}}
+
+      </div>
+
 
 
       <h6>Add A Note!</h6>
-      <form id="add-drink">  
-        <textarea placeholder="New Note" rows="5" cols="50" name="comment" form="usrform"
-          id="noteNote"></textarea>
+      <form id="add-drink">
+        <textarea placeholder="New Note" rows="5" cols="50" name="comment" form="usrform" id="noteNote"></textarea>
       </form>
       <br>
       <button type="submit" class="btn btn-success submit" id="addNote">Add Note!</button>
-      
+
 
     </div>
 
