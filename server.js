@@ -25,8 +25,10 @@ app.set("view engine", "handlebars");
 require("./routes/api_routes")(app);
 require("./routes/html_routes")(app);
 
+let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/sportsScraper";
 
-mongoose.connect("mongodb://localhost/sportsScraper", { useNewUrlParser: true });
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
+
 
 // Start our server so that it can begin listening to client requests.
 app.listen(PORT, function() {
