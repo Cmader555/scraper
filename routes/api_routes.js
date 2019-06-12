@@ -109,12 +109,12 @@ module.exports = function (app) {
 
     });
 
-    app.post("/create-notes/:_id", function (req, res) {
+    app.post("/create-notes/:id", function (req, res) {
 
         db.Note.create(req.body)
-            .then(function (article) {
+            .then(function (dbNote) {
 
-                return db.sportsArticle.findOneAndUpdate({ _id: req.params.id }, { note: dbNote._id }, { new: true });
+                return db.sportsArticle.findOneAndUpdate({ _id: req.params.id }, {$push: {note: dbNote._id }}, { new: true });
 
             }).then(function (dbArticle) {
                 // If we were able to successfully update an Article, send it back to the client
@@ -124,6 +124,14 @@ module.exports = function (app) {
                 res.json(err);
             });
 
+
+
+    })
+
+    app.get("/view-notes/:id", function (req, res){
+
+        db.sportsArticle.findById(req.params.id)
+            .populate("note")
 
 
     })

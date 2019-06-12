@@ -1,7 +1,6 @@
 
 
 
-
 $(document).on('click', "#favoriteFalse", function (event) {
 
   _id = this.value
@@ -28,23 +27,34 @@ $(document).on('click', "#favoriteFalse", function (event) {
 
 $(document).ready(function () {
 
+  // let button = `<button type="submit" class="btn btn-success submit" id="addNote" value="${$(this).}">Add Note!</button>`; 
+
+  // $(".addButton").append(button)
   $(".modal").modal();
 
 })
 
 
-$("#addNote").on("click", function (event) {
+
+$(".article-button").on("click", function(e){
+  //let currentId = $(this).data("value");
+  $("#addNote").val($(this).data("value"))
+})
+
+
+
+$(document).on("click", "#addNote", function (event) {
 
   let note = $("#noteNote").val().trim()
   let _id = this.value;
-  console.log(_id);
+  //console.log(_id);
   function addNote(_id) {
 
     $.ajax({
 
       type: 'POST',
       url: "/create-notes/" + _id,
-      data: note
+      data: {body: note, sportsArticle: _id}
 
 
     }).then(function (response) {
