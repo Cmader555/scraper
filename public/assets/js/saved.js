@@ -56,10 +56,10 @@ $(".article-button").on("click", function (e) {
       for (let i = 0; i < response.note.length; i++) {
 
         let display = `
-        <div class="container">
+        <div class="container displayNotes">
           <p>${response.note[i].body}</p>
           <div class="right-align">
-            <button type="submit" class="btn btn-success submit deleteNote" value="${response.note[i]._id}">Delete Note!</button>
+            <button type="submit" class="btn btn-success submit deleteNote purple lighten-2" value="${response.note[i]._id}">Delete Note!</button>
           </div>
         </div>
         `

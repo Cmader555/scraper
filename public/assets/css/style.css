@@ -3,8 +3,9 @@
      font-family: 'Noto Sans HK', sans-serif;
  }
 
- .noteViewAdd {
+ .displayNotes {
      border-radius: 10px;
      border: .5px solid grey;
      padding: 1%;
+     margin: 1%
  }

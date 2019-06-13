@@ -61,7 +61,7 @@ module.exports = function (app) {
             });
 
 
-                db.sportsArticle.find({}).then(function (article) {
+                db.sportsArticle.find({}).sort({date: -1}).then(function (article) {
                     res.send(article)
 
                 }).catch(function (err) {
