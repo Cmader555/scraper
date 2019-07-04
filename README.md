@@ -1,12 +1,10 @@
-# Friend Finder
+# Sports Article Scraper
 
-Classic Friend finder app that function's like a dating app where a user answers a series of questions. Those answers are then compared to the answers of pre-made "users", and the user receives their closest match. 
-This app is a slight twist on the classic friend finder app, where all of the matches are different characters that Arnold Schwarzenegger has played. 
+This scraper app works by scraping articles from BleacherReport.com, and displaying them on the webpage. A user has the ability to view the articles from their source, or the user can favorite them. On the favorites page a user can add/delete notes, and delete favorites. 
 
 ## Getting Started
 
-* Interested in seeing this app deployed? Check it out here!: https://gentle-hamlet-48502.herokuapp.com/
-
+* Interested in seeing this app deployed? Check it out here!: https://obscure-shore-21174.herokuapp.com/
 * If you want to deploy and it host it yourself, checkout the deployment section!
 
 ### Installing, and deployment
@@ -22,11 +20,11 @@ This app is a slight twist on the classic friend finder app, where all of the ma
 
 ## Built With
 
-* Javascript, J-Query, Express, Node, and HTML
+* Javascript, J-Query, CSS, Cheerio.JS,  Express, Node, MongoDB, mongoose, AJAX calls, handlebars, and MVC design pattern 
 
 ## Preview
 
-![Friend Finder](app/public/images/friendFinder.png)
+![Friend Finder](public/assets/images/scraper.png)
 
 
 ## Authors
